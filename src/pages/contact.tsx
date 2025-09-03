@@ -2,6 +2,23 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import Section from '../components/ui/Section';
+
+type ApiResponse = {
+  success?: boolean;
+  error?: string;
+  message?: string;
+  details?: Array<{ message: string }>;
+};
+
+type FormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  company: string;
+  serviceInterest: string;
+  otherService?: string;
+  message: string;
+};
 import { 
   FiMapPin,
   FiMail,
@@ -14,7 +31,83 @@ import {
 } from 'react-icons/fi';
 
 const ContactPage = () => {
-  const [selectedService, setSelectedService] = useState('');
+  const [formData, setFormData] = useState<FormData>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    serviceInterest: '',
+    message: ''
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleServiceChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      serviceInterest: value,
+      // Clear otherService if not selecting 'other'
+      ...(value !== 'other' && { otherService: undefined })
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      // Prepare the data
+      const submitData = {
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        company: formData.company,
+        service: formData.otherService || formData.serviceInterest,
+        message: formData.message
+      };
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData),
+      });
+
+      const data: ApiResponse = await response.json();
+
+      if (!response.ok) {
+        const errorMessage = data.message || data.error || 'Failed to send message';
+        throw new Error(errorMessage);
+      }
+
+      setStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        company: '',
+        serviceInterest: '',
+        otherService: '',
+        message: ''
+      });
+
+      // Reset success status after 5 seconds
+      setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to send message');
+    }
+  };
 
   const container = {
     hidden: { opacity: 0 },
@@ -39,13 +132,13 @@ const ContactPage = () => {
     {
       icon: <FiMail className="w-6 h-6" />,
       title: 'Email Us',
-      details: 'info@dsetconsulting.com',
-      subtitle: 'We\'ll respond within 24 hours'
+      details: 'contact@dsetconsulting.com',
+      subtitle: 'We will respond within 24 hours'
     },
     {
       icon: <FiPhone className="w-6 h-6" />,
       title: 'Call Us',
-      details: '+1 (555) 123-4567',
+      details: '+91 732 5948-111',
       subtitle: 'Mon-Fri 9:00 AM - 6:00 PM'
     },
     {
@@ -86,7 +179,7 @@ const ContactPage = () => {
             >
               <span className="inline-block mb-6 px-6 py-2 text-sm font-semibold text-white bg-[#ff851b] rounded-full shadow">Get In Touch</span>
               <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Let's Start Your <span className="bg-gradient-to-r from-[#ff851b] to-[#1e90ff] bg-clip-text text-transparent">Digital Transformation</span> Journey
+                Let&apos;s Start Your <span className="bg-gradient-to-r from-[#ff851b] to-[#1e90ff] bg-clip-text text-transparent">Digital Transformation</span> Journey
               </h1>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 Ready to transform your business? Our team of experts is here to help you navigate the digital landscape and achieve sustainable growth.
@@ -114,16 +207,19 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h2 className="text-3xl font-bold text-[#001f3f]">Send us a Message</h2>
-                  <p className="text-[#4d4d4d]">We'd love to hear from you</p>
+                  <p className="text-[#4d4d4d]">We&apos;d love to hear from you</p>
                 </div>
               </div>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-[#001f3f] mb-2">First Name *</label>
                     <input 
                       type="text" 
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#5e17ea] focus:border-transparent transition-all duration-300 text-black"
                       placeholder="Enter your first name"
                       required
@@ -133,6 +229,9 @@ const ContactPage = () => {
                     <label className="block text-sm font-semibold text-[#001f3f] mb-2">Last Name *</label>
                     <input 
                       type="text" 
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#5e17ea] focus:border-transparent transition-all duration-300 text-black"
                       placeholder="Enter your last name"
                       required
@@ -144,6 +243,9 @@ const ContactPage = () => {
                   <label className="block text-sm font-semibold text-[#001f3f] mb-2">Email Address *</label>
                   <input 
                     type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#5e17ea] focus:border-transparent transition-all duration-300 text-black"
                     placeholder="Enter your email address"
                     required
@@ -154,6 +256,9 @@ const ContactPage = () => {
                   <label className="block text-sm font-semibold text-[#001f3f] mb-2">Company</label>
                   <input 
                     type="text" 
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#5e17ea] focus:border-transparent transition-all duration-300 text-black"
                     placeholder="Enter your company name"
                   />
@@ -167,10 +272,11 @@ const ContactPage = () => {
                         <input
                           type="radio"
                           id={service.value}
-                          name="service-interest"
+                          name="serviceInterest"
                           value={service.value}
+                          checked={formData.serviceInterest === service.value}
                           className="sr-only peer"
-                          onChange={(e) => setSelectedService(e.target.value)}
+                          onChange={(e) => handleServiceChange(e.target.value)}
                         />
                         <label
                           htmlFor={service.value}
@@ -191,18 +297,20 @@ const ContactPage = () => {
                   </div>
                   
                   {/* Conditionally show a text input for "Other" */}
-                  {selectedService === 'other' && (
+                  {formData.serviceInterest === 'other' && (
                     <motion.div 
                       className="mt-4"
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <label htmlFor="other-service" className="sr-only">Please specify</label>
+                      <label htmlFor="otherService" className="sr-only">Please specify</label>
                       <input
                         type="text"
-                        id="other-service"
-                        name="other-service"
+                        id="otherService"
+                        name="otherService"
+                        value={formData.otherService || ''}
+                        onChange={handleChange}
                         placeholder="Please specify your interest..."
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#5e17ea] focus:border-transparent transition-all duration-300 text-black"
                       />
@@ -213,6 +321,9 @@ const ContactPage = () => {
                 <div>
                   <label className="block text-sm font-semibold text-[#001f3f] mb-2">Message *</label>
                   <textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows={5}
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#5e17ea] focus:border-transparent transition-all duration-300 resize-none text-black"
                     placeholder="Tell us about your project or how we can help..."
@@ -220,15 +331,27 @@ const ContactPage = () => {
                   ></textarea>
                 </div>
 
+                {status === 'error' && (
+                  <div className="text-red-600 dark:text-red-400 text-sm">
+                    {errorMessage}
+                  </div>
+                )}
+                {status === 'success' && (
+                  <div className="text-green-600 dark:text-green-400 text-sm">
+                    Message sent successfully! We'll get back to you soon.
+                  </div>
+                )}
+
                 <motion.button
                   type="submit"
-                  className="w-full px-8 py-4 bg-gradient-to-r from-[#5e17ea] to-[#1e90ff] text-white font-semibold rounded-xl shadow-lg text-lg overflow-hidden group relative"
+                  disabled={status === 'loading'}
+                  className="w-full px-8 py-4 bg-gradient-to-r from-[#5e17ea] to-[#1e90ff] text-white font-semibold rounded-xl shadow-lg text-lg overflow-hidden group relative disabled:opacity-70"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     <FiSend className="w-5 h-5 mr-2" />
-                    Send Message
+                    {status === 'loading' ? 'Sending...' : 'Send Message'}
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#1e90ff] to-[#5e17ea] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out"></div>
                 </motion.button>
@@ -333,11 +456,11 @@ const ContactPage = () => {
         >
           <h2 className="text-4xl font-bold mb-6 text-[#5e17ea]">Ready to Transform Your Business?</h2>
           <p className="text-xl text-[#ffffff] mb-8 leading-relaxed">
-            Let's discuss how DSeT Consulting can help you achieve your digital transformation goals and drive sustainable growth.
+                            Let&apos;s discuss how DSeT Consulting can help you achieve your digital transformation goals and drive sustainable growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
-              href="tel:+15551234567"
+              href="tel:+917325948111"
               className="relative px-8 py-4 bg-gradient-to-r from-[#5e17ea] to-[#1e90ff] text-white font-semibold rounded-xl shadow-lg text-lg overflow-hidden group"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -349,7 +472,7 @@ const ContactPage = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-[#1e90ff] to-[#5e17ea] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out"></div>
             </motion.a>
             <motion.a
-              href="mailto:info@dsetconsulting.com"
+              href="mailto:contact@dsetconsulting.com"
               className="relative px-8 py-4 text-[#5e17ea] font-semibold rounded-xl text-lg border-2 border-[#001f3f] hover:bg-[#001f3f] hover:text-white transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}

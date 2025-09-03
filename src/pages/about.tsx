@@ -1,21 +1,19 @@
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Layout from '../components/layout/Layout';
 import Section from '../components/ui/Section';
 import { 
   FiTrendingUp,
-  FiMonitor,
   FiBarChart2,
   FiZap,
   FiLayers,
   FiAward,
-  FiSmile,
   FiShield,
   FiGlobe,
   FiCpu,
   FiShoppingCart,
   FiRefreshCcw,
-  FiUsers,
-  FiDatabase
+  FiUsers
 } from 'react-icons/fi';
 
 const AboutPage = () => {
@@ -131,12 +129,13 @@ const AboutPage = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative"
+              className="relative w-full h-96 lg:h-[500px]"
             >
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=700&q=60"
                 alt="Team working together"
-                className="rounded-3xl shadow-2xl w-full object-cover h-96 lg:h-[500px]"
+                fill
+                className="rounded-3xl shadow-2xl object-cover"
               />
             </motion.div>
           </div>
@@ -146,11 +145,12 @@ const AboutPage = () => {
       {/* Narrative Section */}
       <Section bgColor="white" spacing="xl">
         <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div variants={item}>
-            <img
+          <motion.div variants={item} className="relative w-full h-80">
+            <Image
               src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=700&q=60"
               alt="Digital transformation narrative"
-              className="rounded-3xl shadow-lg w-full object-cover"
+              fill
+              className="rounded-3xl shadow-lg object-cover"
             />
           </motion.div>
           <motion.div variants={item}>
@@ -172,7 +172,7 @@ const AboutPage = () => {
             Our Expertise
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {expertiseList.map((exp, idx) => (
+            {expertiseList.map((exp) => (
               <motion.div
                 key={exp.title}
                 variants={item}
@@ -199,7 +199,7 @@ const AboutPage = () => {
             Why Choose <span className="text-[#5e17ea]">DSeT</span>
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            {whyChoose.map((w, idx) => (
+            {whyChoose.map((w) => (
               <motion.div
                 key={w.title}
                 variants={item}
@@ -226,9 +226,9 @@ const AboutPage = () => {
           className="text-center max-w-4xl mx-auto"
         >
           <h2 className="text-4xl font-bold mb-6 text-[#5e17ea]">Ready to Start Your Transformation Journey?</h2>
-          <p className="text-xl text-[#ffffff] mb-8 leading-relaxed">
-            Let's partner to craft a bespoke strategy that drives innovation, efficiency & growth for your organisation.
-          </p>
+                      <p className="text-xl text-[#ffffff] mb-8 leading-relaxed">
+              Let&apos;s partner to craft a bespoke strategy that drives innovation, efficiency & growth for your organisation.
+            </p>
           <motion.a
             href="/contact"
             className="relative px-8 py-4 bg-gradient-to-r from-[#5e17ea] to-[#1e90ff] text-white font-semibold rounded-xl shadow-lg text-lg overflow-hidden group"

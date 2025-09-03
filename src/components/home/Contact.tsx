@@ -4,6 +4,13 @@ import Section from '../ui/Section';
 import Button from '../ui/Button';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
+type ApiResponse = {
+  success?: boolean;
+  error?: string;
+  message?: string;
+  details?: Array<{ message: string }>;
+};
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -11,6 +18,8 @@ const Contact = () => {
     phone: '',
     message: '',
   });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -20,35 +29,60 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
-    });
-    // Show success message or redirect
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data: ApiResponse = await response.json();
+
+      if (!response.ok) {
+        const errorMessage = data.message || data.error || 'Failed to send message';
+        throw new Error(errorMessage);
+      }
+
+      setStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+      });
+
+      // Reset success status after 5 seconds
+      setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to send message');
+    }
   };
 
   const contactInfo = [
     {
-      icon: <FiMail className="h-6 w-6" />,
+      icon: <FiMail className="h-5 w-5 sm:h-6 sm:w-6" />,
       title: 'Email Us',
-      details: 'info@dsetconsulting.com',
-      action: 'mailto:info@dsetconsulting.com',
+      details: 'contact@dsetconsulting.com',
+      action: 'mailto:contact@dsetconsulting.com',
     },
     {
-      icon: <FiPhone className="h-6 w-6" />,
+      icon: <FiPhone className="h-5 w-5 sm:h-6 sm:w-6" />,
       title: 'Call Us',
-      details: '+1 (555) 123-4567',
-      action: 'tel:+15551234567',
+      details: '+91 732 5948-111',
+      action: 'tel:+917325948111',
     },
     {
-      icon: <FiMapPin className="h-6 w-6" />,
+      icon: <FiMapPin className="h-5 w-5 sm:h-6 sm:w-6" />,
       title: 'Visit Us',
       details: 'Bangalore, India',
       action: 'https://maps.google.com',
@@ -57,38 +91,39 @@ const Contact = () => {
 
   return (
     <Section bgColor="white" id="contact">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          className="text-center lg:text-left px-4 sm:px-6 lg:px-0"
         >
-          <span className="inline-block px-3 py-1 text-sm font-medium text-blue-600 bg-blue-100 dark:bg-blue-900 dark:text-blue-300 rounded-full mb-4">
+          <span className="inline-block px-3 py-1 text-xs sm:text-sm font-medium text-blue-300 bg-blue-900 rounded-full mb-3 sm:mb-4">
             Contact Us
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 leading-tight">
             Get in Touch with Our <span className="text-blue-600">AI Experts</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+          <p className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-8 leading-relaxed">
             Have questions about how AI can transform your business? Ready to start your digital 
             transformation journey? Our team of experts is here to help you navigate the path to 
             innovation and growth.
           </p>
           
-          <div className="space-y-6 mb-8">
+          <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
             {contactInfo.map((item, index) => (
               <a 
                 key={index}
                 href={item.action}
-                className="flex items-center gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg border border-gray-700 hover:bg-gray-800 transition-colors min-h-[44px]"
               >
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-400 flex-shrink-0">
                   {item.icon}
                 </div>
-                <div>
-                  <h4 className="font-semibold">{item.title}</h4>
-                  <p className="text-gray-600 dark:text-gray-400">{item.details}</p>
+                <div className="text-left">
+                  <h4 className="font-semibold text-sm sm:text-base">{item.title}</h4>
+                  <p className="text-gray-400 text-xs sm:text-sm">{item.details}</p>
                 </div>
               </a>
             ))}
@@ -100,12 +135,13 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          className="px-4 sm:px-6 lg:px-0"
         >
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
-            <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg border border-gray-700">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center lg:text-left">Send Us a Message</h3>
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1 sm:mb-2">
                   Full Name
                 </label>
                 <input
@@ -114,14 +150,14 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-600 bg-gray-700 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base min-h-[44px]"
                   placeholder="Your name"
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1 sm:mb-2">
                   Email Address
                 </label>
                 <input
@@ -130,14 +166,14 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-600 bg-gray-700 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base min-h-[44px]"
                   placeholder="your.email@example.com"
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2">
                   Phone Number (Optional)
                 </label>
                 <input
@@ -146,13 +182,13 @@ const Contact = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-600 bg-gray-700 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base min-h-[44px]"
                   placeholder="Your phone number"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1 sm:mb-2">
                   Your Message
                 </label>
                 <textarea
@@ -161,14 +197,35 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-600 bg-gray-700 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base resize-vertical"
                   placeholder="How can we help you?"
                   required
                 />
               </div>
               
-              <Button type="submit" size="lg" className="w-full">
-                Send Message
+              {status === 'error' && (
+                <div className="text-red-600 dark:text-red-400 text-sm p-3 bg-red-900/20 rounded-lg border border-red-500/30">
+                  {errorMessage}
+                </div>
+              )}
+              {status === 'success' && (
+                <div className="text-green-600 dark:text-green-400 text-sm p-3 bg-green-900/20 rounded-lg border border-green-500/30">
+                  Message sent successfully! We'll get back to you soon.
+                </div>
+              )}
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full min-h-[44px] text-sm sm:text-base"
+                disabled={status === 'loading'}
+                onClick={(e) => {
+                  // Ensure the button click doesn't trigger a form submission
+                  e.preventDefault();
+                  // Manually trigger the form submission handler
+                  handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
+                }}
+              >
+                {status === 'loading' ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </div>

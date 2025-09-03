@@ -1,0 +1,451 @@
+{
+  "assessmentMetadata": {
+    "title": "Digital Maturity Assessment for MSMEs",
+    "description": "A comprehensive evaluation of your organization's digital readiness and transformation progress",
+    "version": "1.0",
+    "totalQuestions": 60,
+    "estimatedTime": "15-20 minutes"
+  },
+  "categories": [
+    {
+      "id": "digital_strategy",
+      "name": "Digital Strategy & Vision",
+      "description": "Strategic planning and digital vision alignment",
+      "weight": 20,
+      "questions": [
+        {
+          "id": "ds_1",
+          "question": "Does your organization have a clearly defined digital transformation strategy?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No strategy exists" },
+            { "value": 2, "text": "Basic strategy being developed" },
+            { "value": 3, "text": "Strategy exists but not well communicated" },
+            { "value": 4, "text": "Well-defined strategy with clear roadmap" },
+            { "value": 5, "text": "Comprehensive strategy with regular reviews and updates" }
+          ]
+        },
+        {
+          "id": "ds_2",
+          "question": "How well is your digital strategy aligned with overall business objectives?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Not aligned at all" },
+            { "value": 2, "text": "Minimal alignment" },
+            { "value": 3, "text": "Partially aligned" },
+            { "value": 4, "text": "Well aligned" },
+            { "value": 5, "text": "Fully integrated and aligned" }
+          ]
+        },
+        {
+          "id": "ds_3",
+          "question": "How frequently does leadership review and update digital initiatives?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Never or rarely" },
+            { "value": 2, "text": "Annually" },
+            { "value": 3, "text": "Bi-annually" },
+            { "value": 4, "text": "Quarterly" },
+            { "value": 5, "text": "Monthly or more frequent" }
+          ]
+        },
+        {
+          "id": "ds_4",
+          "question": "What is the level of digital literacy among your leadership team?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Very low - limited understanding" },
+            { "value": 2, "text": "Basic understanding" },
+            { "value": 3, "text": "Moderate understanding" },
+            { "value": 4, "text": "Good understanding" },
+            { "value": 5, "text": "Excellent - digitally savvy leaders" }
+          ]
+        },
+        {
+          "id": "ds_5",
+          "question": "How is digital transformation funded in your organization?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No dedicated budget" },
+            { "value": 2, "text": "Ad-hoc funding when needed" },
+            { "value": 3, "text": "Annual budget allocation" },
+            { "value": 4, "text": "Dedicated budget with clear ROI tracking" },
+            { "value": 5, "text": "Strategic investment with multi-year commitment" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "technology_infrastructure",
+      "name": "Technology Infrastructure",
+      "description": "Current technology stack and infrastructure capabilities",
+      "weight": 25,
+      "questions": [
+        {
+          "id": "ti_1",
+          "question": "What is the current state of your IT infrastructure?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Outdated legacy systems" },
+            { "value": 2, "text": "Mix of old and new systems" },
+            { "value": 3, "text": "Moderately modern infrastructure" },
+            { "value": 4, "text": "Modern infrastructure with some cloud adoption" },
+            { "value": 5, "text": "State-of-the-art, cloud-first infrastructure" }
+          ]
+        },
+        {
+          "id": "ti_2",
+          "question": "To what extent has your organization adopted cloud computing?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No cloud adoption" },
+            { "value": 2, "text": "Basic cloud services (email, storage)" },
+            { "value": 3, "text": "Some business applications in cloud" },
+            { "value": 4, "text": "Majority of systems cloud-based" },
+            { "value": 5, "text": "Cloud-first approach with hybrid/multi-cloud" }
+          ]
+        },
+        {
+          "id": "ti_3",
+          "question": "How robust is your cybersecurity framework?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Basic antivirus protection only" },
+            { "value": 2, "text": "Basic security measures in place" },
+            { "value": 3, "text": "Standard security protocols implemented" },
+            { "value": 4, "text": "Comprehensive security framework" },
+            { "value": 5, "text": "Advanced security with continuous monitoring" }
+          ]
+        },
+        {
+          "id": "ti_4",
+          "question": "How well integrated are your business systems?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Completely siloed systems" },
+            { "value": 2, "text": "Limited integration between key systems" },
+            { "value": 3, "text": "Moderate integration with some data sharing" },
+            { "value": 4, "text": "Well-integrated systems with good data flow" },
+            { "value": 5, "text": "Fully integrated ecosystem with real-time data" }
+          ]
+        },
+        {
+          "id": "ti_5",
+          "question": "What is your approach to data backup and disaster recovery?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No formal backup strategy" },
+            { "value": 2, "text": "Basic backup procedures" },
+            { "value": 3, "text": "Regular backups with basic recovery plan" },
+            { "value": 4, "text": "Comprehensive backup and tested recovery procedures" },
+            { "value": 5, "text": "Advanced disaster recovery with minimal downtime" }
+          ]
+        },
+        {
+          "id": "ti_6",
+          "question": "How do you handle software updates and maintenance?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Reactive approach when systems fail" },
+            { "value": 2, "text": "Irregular updates when convenient" },
+            { "value": 3, "text": "Scheduled maintenance windows" },
+            { "value": 4, "text": "Proactive maintenance with minimal disruption" },
+            { "value": 5, "text": "Automated updates with zero-downtime deployment" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data_analytics",
+      "name": "Data & Analytics",
+      "description": "Data management, analytics capabilities, and data-driven decision making",
+      "weight": 20,
+      "questions": [
+        {
+          "id": "da_1",
+          "question": "How would you describe your organization's data management practices?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No formal data management" },
+            { "value": 2, "text": "Basic data storage and filing" },
+            { "value": 3, "text": "Structured data management with some governance" },
+            { "value": 4, "text": "Well-organized data with governance policies" },
+            { "value": 5, "text": "Advanced data governance with data quality controls" }
+          ]
+        },
+        {
+          "id": "da_2",
+          "question": "To what extent do you use data analytics for business decisions?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Decisions based on intuition only" },
+            { "value": 2, "text": "Occasional use of basic reports" },
+            { "value": 3, "text": "Regular reporting with some analysis" },
+            { "value": 4, "text": "Data-driven decisions with advanced analytics" },
+            { "value": 5, "text": "AI/ML powered predictive analytics" }
+          ]
+        },
+        {
+          "id": "da_3",
+          "question": "How accessible is business data to decision-makers?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Data is difficult to access or fragmented" },
+            { "value": 2, "text": "Limited access with manual effort required" },
+            { "value": 3, "text": "Moderate access through reports" },
+            { "value": 4, "text": "Good access through dashboards" },
+            { "value": 5, "text": "Real-time access through self-service analytics" }
+          ]
+        },
+        {
+          "id": "da_4",
+          "question": "What is your organization's capability in predictive analytics?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No predictive capabilities" },
+            { "value": 2, "text": "Basic forecasting using historical data" },
+            { "value": 3, "text": "Some predictive modeling" },
+            { "value": 4, "text": "Advanced predictive analytics" },
+            { "value": 5, "text": "AI/ML powered predictions with continuous learning" }
+          ]
+        },
+        {
+          "id": "da_5",
+          "question": "How do you ensure data quality and accuracy?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No formal data quality processes" },
+            { "value": 2, "text": "Manual data validation when issues arise" },
+            { "value": 3, "text": "Basic data quality checks" },
+            { "value": 4, "text": "Systematic data quality management" },
+            { "value": 5, "text": "Automated data quality with continuous monitoring" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "digital_processes",
+      "name": "Digital Processes & Automation",
+      "description": "Process digitization and automation maturity",
+      "weight": 15,
+      "questions": [
+        {
+          "id": "dp_1",
+          "question": "What percentage of your business processes are digitized?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Less than 20%" },
+            { "value": 2, "text": "20% - 40%" },
+            { "value": 3, "text": "40% - 60%" },
+            { "value": 4, "text": "60% - 80%" },
+            { "value": 5, "text": "More than 80%" }
+          ]
+        },
+        {
+          "id": "dp_2",
+          "question": "How extensively do you use workflow automation?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No automation" },
+            { "value": 2, "text": "Basic automation for simple tasks" },
+            { "value": 3, "text": "Moderate automation across some processes" },
+            { "value": 4, "text": "Extensive automation with workflow management" },
+            { "value": 5, "text": "Intelligent automation with AI/ML integration" }
+          ]
+        },
+        {
+          "id": "dp_3",
+          "question": "How do you handle document management?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Paper-based with manual filing" },
+            { "value": 2, "text": "Mix of paper and basic digital storage" },
+            { "value": 3, "text": "Digital document management system" },
+            { "value": 4, "text": "Advanced document management with search" },
+            { "value": 5, "text": "AI-powered document processing and management" }
+          ]
+        },
+        {
+          "id": "dp_4",
+          "question": "What is your approach to process optimization?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No formal process optimization" },
+            { "value": 2, "text": "Occasional process reviews" },
+            { "value": 3, "text": "Regular process improvement initiatives" },
+            { "value": 4, "text": "Continuous process optimization" },
+            { "value": 5, "text": "AI-driven process optimization with real-time monitoring" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "customer_experience",
+      "name": "Customer Experience & Engagement",
+      "description": "Digital customer touchpoints and experience management",
+      "weight": 15,
+      "questions": [
+        {
+          "id": "ce_1",
+          "question": "How digitized is your customer interaction?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Primarily face-to-face or phone" },
+            { "value": 2, "text": "Basic digital channels (email, website)" },
+            { "value": 3, "text": "Multiple digital touchpoints" },
+            { "value": 4, "text": "Integrated omnichannel experience" },
+            { "value": 5, "text": "AI-powered personalized digital experience" }
+          ]
+        },
+        {
+          "id": "ce_2",
+          "question": "How do you collect and use customer feedback?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No systematic feedback collection" },
+            { "value": 2, "text": "Occasional surveys or informal feedback" },
+            { "value": 3, "text": "Regular feedback collection" },
+            { "value": 4, "text": "Continuous feedback with action plans" },
+            { "value": 5, "text": "Real-time feedback integration with AI analysis" }
+          ]
+        },
+        {
+          "id": "ce_3",
+          "question": "What is your capability in customer data analytics?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No customer data analysis" },
+            { "value": 2, "text": "Basic customer information tracking" },
+            { "value": 3, "text": "Customer behavior analysis" },
+            { "value": 4, "text": "Advanced customer analytics and segmentation" },
+            { "value": 5, "text": "AI-powered customer insights and predictions" }
+          ]
+        },
+        {
+          "id": "ce_4",
+          "question": "How personalized is your customer communication?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Generic communication for all customers" },
+            { "value": 2, "text": "Basic segmentation" },
+            { "value": 3, "text": "Targeted communication based on customer type" },
+            { "value": 4, "text": "Personalized communication based on behavior" },
+            { "value": 5, "text": "AI-driven hyper-personalization" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "workforce_skills",
+      "name": "Workforce & Digital Skills",
+      "description": "Employee digital capabilities and learning culture",
+      "weight": 15,
+      "questions": [
+        {
+          "id": "ws_1",
+          "question": "What is the overall digital skill level of your workforce?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Very low - basic computer skills only" },
+            { "value": 2, "text": "Basic digital skills" },
+            { "value": 3, "text": "Moderate digital skills" },
+            { "value": 4, "text": "Good digital skills across most employees" },
+            { "value": 5, "text": "Excellent - digitally native workforce" }
+          ]
+        },
+        {
+          "id": "ws_2",
+          "question": "How comprehensive is your digital training program?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No formal digital training" },
+            { "value": 2, "text": "Basic training when new tools are introduced" },
+            { "value": 3, "text": "Regular training programs" },
+            { "value": 4, "text": "Comprehensive ongoing digital skills development" },
+            { "value": 5, "text": "Continuous learning culture with personalized development paths" }
+          ]
+        },
+        {
+          "id": "ws_3",
+          "question": "How adaptable is your workforce to new technologies?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Resistant to change" },
+            { "value": 2, "text": "Slow to adapt" },
+            { "value": 3, "text": "Moderately adaptable" },
+            { "value": 4, "text": "Generally adaptable and open to change" },
+            { "value": 5, "text": "Highly adaptable and eager to learn new technologies" }
+          ]
+        },
+        {
+          "id": "ws_4",
+          "question": "Do you have dedicated IT or digital transformation roles?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No dedicated IT roles" },
+            { "value": 2, "text": "Basic IT support only" },
+            { "value": 3, "text": "IT team with some digital capabilities" },
+            { "value": 4, "text": "Dedicated digital transformation team" },
+            { "value": 5, "text": "Centers of excellence for digital innovation" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "innovation_culture",
+      "name": "Innovation & Culture",
+      "description": "Innovation mindset and digital transformation culture",
+      "weight": 10,
+      "questions": [
+        {
+          "id": "ic_1",
+          "question": "How would you describe your organization's innovation culture?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Risk-averse, traditional approach" },
+            { "value": 2, "text": "Cautious but open to proven solutions" },
+            { "value": 3, "text": "Balanced approach to innovation" },
+            { "value": 4, "text": "Encouraging innovation and experimentation" },
+            { "value": 5, "text": "Highly innovative with a fail-fast mentality" }
+          ]
+        },
+        {
+          "id": "ic_2",
+          "question": "How does your organization approach emerging technologies?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Wait for technologies to be widely adopted" },
+            { "value": 2, "text": "Follow industry best practices" },
+            { "value": 3, "text": "Evaluate technologies after market validation" },
+            { "value": 4, "text": "Early adopter of promising technologies" },
+            { "value": 5, "text": "Pioneer in testing cutting-edge technologies" }
+          ]
+        },
+        {
+          "id": "ic_3",
+          "question": "How collaborative is your approach to digital transformation?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "Top-down approach with limited input" },
+            { "value": 2, "text": "Some consultation with key stakeholders" },
+            { "value": 3, "text": "Regular collaboration across departments" },
+            { "value": 4, "text": "Cross-functional teams driving transformation" },
+            { "value": 5, "text": "Organization-wide collaboration with external partnerships" }
+          ]
+        },
+        {
+          "id": "ic_4",
+          "question": "How do you measure and celebrate digital transformation success?",
+          "type": "single_choice",
+          "options": [
+            { "value": 1, "text": "No formal measurement or recognition" },
+            { "value": 2, "text": "Basic tracking of major milestones" },
+            { "value": 3, "text": "Regular progress reviews and recognition" },
+            { "value": 4, "text": "Comprehensive KPIs with celebration of achievements" },
+            { "value": 5, "text": "Real-time metrics with continuous recognition and learning" }
+          ]
+        }
+      ]
+    }
+  ]
+}

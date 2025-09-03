@@ -16,18 +16,18 @@ const Section = ({
   spacing = 'lg',
 }: SectionProps) => {
   const bgClasses = {
-    white: 'bg-white dark:bg-gray-950',
-    light: 'bg-gray-50 dark:bg-gray-900',
-    dark: 'bg-gray-900 text-white dark:bg-gray-950',
+    white: 'bg-gray-950',
+    light: 'bg-gray-900',
+    dark: 'bg-gray-950 text-white',
     primary: 'bg-blue-600 text-white',
     gradient: 'bg-gradient-to-br from-blue-600 to-indigo-700 text-white',
   };
 
   const spacingClasses = {
-    sm: 'py-8 md:py-12',
-    md: 'py-12 md:py-16',
-    lg: 'py-16 md:py-24',
-    xl: 'py-24 md:py-32',
+    sm: 'py-6 sm:py-8 md:py-12',
+    md: 'py-8 sm:py-12 md:py-16',
+    lg: 'py-12 sm:py-16 md:py-24',
+    xl: 'py-16 sm:py-24 md:py-32',
   };
 
   return (

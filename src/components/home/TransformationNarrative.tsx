@@ -110,7 +110,7 @@ const TransformationNarrative = () => {
                       <h3 className="text-2xl font-bold text-white mb-3">Traditional Challenges</h3>
                       <p className="text-gray-300 text-lg leading-relaxed">
                         Legacy systems, disconnected processes, and manual workflows create inefficiencies 
-                        that limit growth potential and competitive advantage in today's digital-first economy.
+                        that limit growth potential and competitive advantage in today&apos;s digital-first economy.
                       </p>
                     </div>
                   </div>
@@ -260,7 +260,7 @@ const TransformationNarrative = () => {
             <p className="text-xl text-[#4d4d4d] max-w-4xl mx-auto leading-relaxed">
               DSeT Consulting stands as a prominent Global Research and Consulting arm delivering pragmatic orchestration 
               of enterprise-level digital strategy, tailored consulting services, and sophisticated analytical services 
-              for businesses aiming to thrive in today's fast-paced digital landscape.
+              for businesses aiming to thrive in today&apos;s fast-paced digital landscape.
             </p>
           </div>
           

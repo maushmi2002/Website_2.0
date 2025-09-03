@@ -17,14 +17,11 @@ import {
   FiActivity,
   FiHeart,
   FiCpu,
-  FiTruck,
-  FiMonitor,
-  FiLayers,
-  FiDatabase,
-  FiGlobe
+  FiTruck
 } from 'react-icons/fi';
 
 const ServicesPage = () => {
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -72,7 +69,7 @@ const ServicesPage = () => {
         {
           icon: <FiBarChart2 className="w-6 h-6" />,
           title: "Data Analytics and Business Intelligence",
-          description: "Activate your data's potential with our analytics and business intelligence services.",
+          description: "Activate your data&apos;s potential with our analytics and business intelligence services.",
           link: "/services/data-analytics"
         }
       ],
@@ -187,7 +184,7 @@ const ServicesPage = () => {
       link: "/services/smb-transformation"
     },
     {
-      icon: <FiMonitor className="w-8 h-8" />,
+      icon: <FiCpu className="w-8 h-8" />,
       title: "Edge Computing in Healthcare",
       description: "Advanced edge computing solutions revolutionizing healthcare delivery and patient outcomes.",
       link: "/services/edge-healthcare"
@@ -379,6 +376,7 @@ const ServicesPage = () => {
         {arcCategories.map((category, categoryIndex) => (
           <motion.div
             key={category.title}
+            id={category.title.toLowerCase()}
             className={`mb-24 ${categoryIndex === arcCategories.length - 1 ? 'mb-0' : ''}`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -636,7 +634,7 @@ const ServicesPage = () => {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl text-[#ffffff] mb-8 leading-relaxed">
-            Let's collaborate to create a tailored digital transformation strategy that aligns with your business objectives.
+            Let&apos;s collaborate to create a tailored digital transformation strategy that aligns with your business objectives.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
