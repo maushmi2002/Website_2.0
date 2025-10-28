@@ -1,3 +1,4 @@
+"use client";
 import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';

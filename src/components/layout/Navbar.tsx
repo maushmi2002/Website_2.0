@@ -29,6 +29,7 @@ const Navbar = ({ bannerVisible = true }: NavbarProps) => {
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Career', href: '/career' },
   ];
 
   return (
