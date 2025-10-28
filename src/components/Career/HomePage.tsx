@@ -27,16 +27,10 @@ const HomePage = () => {
             Join a team of innovators and problem-solvers. Discover opportunities that align with your skills and aspirations at DSeT Consulting.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* <Button
-              // onClick={() => onNavigate("apply")}
-              className="bg-[#4E00FF] hover:bg-[#4E00FF]/90 text-white px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
-            >
-              Apply Now
-              <ArrowRight className="ml-2" size={20} />
-            </Button> */}
+           
             <Link href="/career/jobs">
               <Button
-                className="bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+                className="bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 h-1 cursor-pointer"
               >
                 Explore Jobs
                 <Search className="ml-2" size={20} />
@@ -56,7 +50,7 @@ const HomePage = () => {
             {/* Card 1 */}
             <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-shadow duration-300">
               <div className="w-14 h-14 bg-[#4E00FF] rounded-lg flex items-center justify-center mb-4">
-                <Briefcase className="text-white" size={28} />
+                <Briefcase className="text-white cursor-pointer" size={28} />
               </div>
               <h3 className="font-['Poppins'] font-semibold text-xl mb-3 text-[#0E0E2E]">
                 Career Growth
@@ -69,7 +63,7 @@ const HomePage = () => {
             {/* Card 2 */}
             <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-shadow duration-300">
               <div className="w-14 h-14 bg-[#00F1FF] rounded-lg flex items-center justify-center mb-4">
-                <Users className="text-[#0E0E2E]" size={28} />
+                <Users className="text-[#0E0E2E] cursor-pointer" size={28} />
               </div>
               <h3 className="font-['Poppins'] font-semibold text-xl mb-3 text-[#0E0E2E]">
                 Collaborative Culture
@@ -82,7 +76,7 @@ const HomePage = () => {
             {/* Card 3 */}
             <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-shadow duration-300">
               <div className="w-14 h-14 bg-[#4E00FF] rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="text-white" size={28} />
+                <TrendingUp className="text-white cursor-pointer" size={28} />
               </div>
               <h3 className="font-['Poppins'] font-semibold text-xl mb-3 text-[#0E0E2E]">
                 Competitive Benefits
@@ -104,13 +98,15 @@ const HomePage = () => {
           <p className="font-['Inter'] text-lg mb-8 text-white/90 max-w-2xl mx-auto">
             Browse our current openings and find the perfect role that matches your expertise and career goals.
           </p>
+           <Link href="/career/jobs">
           <Button
             // onClick={() => onNavigate("jobs")}
-            className="bg-white text-[#4E00FF] hover:bg-white/90 px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+            className="bg-black text-[#4E00FF] hover:bg-white/90 px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
           >
             View All Jobs
-            <ArrowRight className="ml-2" size={20} />
+            <ArrowRight className="ml-2 " size={20} />
           </Button>
+           </Link>
         </div>
       </section>
     </div>

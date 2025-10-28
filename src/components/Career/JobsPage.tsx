@@ -171,7 +171,7 @@ const JobsPage = () => {
                         {/* Search Bar */}
                         <div className="relative md:col-span-1">
                             <Search
-                                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black"
                                 size={20}
                             />
                             <input
@@ -179,23 +179,23 @@ const JobsPage = () => {
                                 placeholder="Search jobs..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-black text-black"
                             />
                         </div>
 
+
+                        {/* Location Dropdown */}
                         {/* Location Dropdown */}
                         <div className="relative">
-                            <Button
+                            <button
                                 onClick={() =>
-                                    setOpenDropdown(
-                                        openDropdown === "location" ? null : "location"
-                                    )
+                                    setOpenDropdown(openDropdown === "location" ? null : "location")
                                 }
                                 className="flex justify-between items-center w-full border border-gray-300 rounded-md py-2 px-4 bg-white text-gray-700 hover:bg-gray-50"
                             >
                                 {selectedLocation}
                                 <ChevronDown size={18} />
-                            </Button>
+                            </button>
                             {openDropdown === "location" && (
                                 <div className="absolute z-10 w-full bg-white border border-gray-200 mt-2 rounded-md shadow-lg">
                                     {locations.map((loc) => (
@@ -216,6 +216,7 @@ const JobsPage = () => {
                                 </div>
                             )}
                         </div>
+
 
                         {/* Type Dropdown */}
                         <div className="relative">
@@ -238,8 +239,8 @@ const JobsPage = () => {
                                                 setOpenDropdown(null);
                                             }}
                                             className={`px-4 py-2 cursor-pointer hover:bg-cyan-100 ${selectedType === type
-                                                    ? "bg-cyan-100 text-gray-800"
-                                                    : "text-gray-700"
+                                                ? "bg-cyan-100 text-gray-800"
+                                                : "text-gray-700"
                                                 }`}
                                         >
                                             {type}
@@ -272,8 +273,8 @@ const JobsPage = () => {
                                                 setOpenDropdown(null);
                                             }}
                                             className={`px-4 py-2 cursor-pointer hover:bg-cyan-100 ${selectedCategory === cat
-                                                    ? "bg-cyan-100 text-gray-800"
-                                                    : "text-gray-700"
+                                                ? "bg-cyan-100 text-gray-800"
+                                                : "text-gray-700"
                                                 }`}
                                         >
                                             {cat}
@@ -334,9 +335,11 @@ const JobsPage = () => {
                                 </div>
 
                                 <div className="flex flex-col gap-2">
-                                    <Button className="bg-[#4E00FF] hover:bg-[#4E00FF]/90 text-white">
-                                        View Details
-                                    </Button>
+                                    <Link href="/career/jobs/jobDetails">
+                                        <Button className="bg-[#4E00FF] hover:bg-[#4E00FF]/90 text-white">
+                                            View Details
+                                        </Button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
