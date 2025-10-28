@@ -2,11 +2,10 @@ import React from 'react'
 import Button from '../ui/Button'
 import { ArrowRight, Briefcase, Search, TrendingUp, Users } from 'lucide-react'
 import Image from 'next/image'
-interface HomePageProps {
-  onNavigate: (page: string) => void;
-}
+import Link from 'next/link'
 
-const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
+
+const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -35,13 +34,14 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               Apply Now
               <ArrowRight className="ml-2" size={20} />
             </Button> */}
-            <Button
-               onClick={() => onNavigate("jobs")}
-              className="bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
-            >
-              Explore Jobs
-              <Search className="ml-2" size={20} />
-            </Button>
+            <Link href="/career/jobs">
+              <Button
+                className="bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+              >
+                Explore Jobs
+                <Search className="ml-2" size={20} />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
