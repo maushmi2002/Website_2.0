@@ -1,8 +1,8 @@
 "use client";
-
 import React, { useState } from "react";
-import { ArrowLeft, CheckCircle, Upload } from "lucide-react";
 import Link from "next/link";
+import { FaArrowLeft, FaUpload } from "react-icons/fa6";
+import { FiCheckCircle } from "react-icons/fi";
 
 function ApplyJobPage() {
   const [formData, setFormData] = useState({
@@ -43,17 +43,17 @@ function ApplyJobPage() {
   return (
     <div className="min-h-screen bg-[#F4F5F9] font-['Inter']">
       {/* Back Button */}
-    <div className="bg-white border-b">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <div className="flex items-center justify-end">
-      <Link href="/career/jobs">
-        <ArrowLeft
-          className="w-7 h-7 cursor-pointer text-gray-700 hover:text-blue-600 transition-colors"
-        />
-      </Link>
-    </div>
-  </div>
-</div>
+      <div className="bg-white border-b">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-end">
+            <Link href="/career/jobs">
+              <FaArrowLeft
+                className="w-7 h-7 cursor-pointer text-gray-700 hover:text-blue-600 transition-colors"
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
 
       {/* Page Header */}
       <div className="bg-white border-b shadow-sm">
@@ -175,7 +175,7 @@ function ApplyJobPage() {
                   className="flex items-center justify-center w-full px-4 py-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#4E00FF] transition-colors bg-white text-center"
                 >
                   <div>
-                    <Upload className="mx-auto mb-2 text-[#4E00FF]" size={32} />
+                    <FaUpload className="mx-auto mb-2 text-[#4E00FF]" size={32} />
                     <p className="text-sm text-gray-600 mb-1">
                       {formData.resume
                         ? formData.resume.name
@@ -227,29 +227,33 @@ function ApplyJobPage() {
 
       {/* Success Dialog */}
       {showSuccessDialog && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-          <div className="bg-[#0E0E2E] text-center rounded-xl p-8 max-w-sm w-full border border-[#4E00FF] shadow-lg">
-            <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 bg-[#00F1FF] rounded-full flex items-center justify-center">
-                <CheckCircle size={40} className="text-[#0E0E2E]" />
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md text-center transform transition-all duration-300 scale-100">
+            <div className="flex justify-center mb-5">
+              <div className="bg-green-100 rounded-full p-3">
+                <FiCheckCircle size={40} className="text-green-600" />
               </div>
             </div>
-            <h2 className="font-['Poppins'] font-bold text-2xl text-[#4E00FF]">
-              Application Submitted!
+
+            <h2 className="text-2xl font-semibold text-gray-900 font-['Poppins']">
+              Application Submitted
             </h2>
-            <p className="text-white mt-4">
-              Thank you for applying! We’ve received your application and will
-              review it carefully. You’ll hear from us within 5–7 business days.
+
+            <p className="text-gray-600 mt-3 leading-relaxed">
+              Thank you for applying! Your application has been received successfully.
+              We’ll review it carefully and get back to you within 5–7 business days.
             </p>
+
             <button
               onClick={handleCloseSuccess}
-              className="mt-6 bg-[#4E00FF] hover:bg-[#4E00FF]/90 text-white px-8 py-3 rounded-lg font-semibold transition"
+              className="mt-6 bg-[#4E00FF] hover:bg-[#3C00CC] text-white px-8 py-3 rounded-lg font-medium transition duration-200"
             >
               Back to Home
             </button>
           </div>
         </div>
       )}
+
     </div>
   );
 }

@@ -1,17 +1,18 @@
-import React from 'react'
+import React from 'react';
 import Button from '../ui/Button';
-import { ArrowLeft, Briefcase, CheckCircle2, Clock, DollarSign, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import { FaArrowLeft, FaBriefcase, FaClock, FaIndianRupeeSign, FaMapPin } from 'react-icons/fa6';
+import { FiCheckCircle } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
 function JobDetailsPage() {
   const job = {
-    // id: jobId,
     title: "Senior Software Engineer",
     company: "DSeT Consulting",
     location: "New York, NY",
     type: "Full-time",
     category: "Technology",
-    salary: "$120k - $160k",
+    salary: " ₹120k -  ₹160k",
     posted: "2 days ago",
     description: `We are seeking an experienced Senior Software Engineer to join our growing technology team. In this role, you will lead the development of cutting-edge software solutions, mentor junior developers, and collaborate with cross-functional teams to deliver high-quality products.
 
@@ -44,70 +45,128 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
       "Collaborative and inclusive work environment",
     ],
   };
+
+  // Animation Variants
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5 }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#F4F5F9]">
       {/* Back Button */}
-    <div className="bg-white border-b">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <div className="flex items-center justify-end">
-      <Link href="/career/jobs">
-        <ArrowLeft
-          className="w-7 h-7 cursor-pointer text-gray-700 hover:text-blue-600 transition-colors"
-        />
-      </Link>
-    </div>
-  </div>
-</div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+        className="bg-white border-b"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-end">
+            <Link href="/career/jobs">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaArrowLeft
+                  className="w-7 h-7 cursor-pointer text-gray-700 hover:text-blue-600 transition-colors"
+                />
+              </motion.div>
+            </Link>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Job Header */}
-      <div className="bg-white border-b">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="bg-white border-b"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
             <div className="flex-1">
-              <h1 className="font-['Poppins'] font-bold text-3xl md:text-4xl mb-3 text-[#4E00FF]">
+              <motion.h1
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="font-['Poppins'] font-bold text-3xl md:text-4xl mb-3 text-[#4E00FF]"
+              >
                 {job.title}
-              </h1>
-              <p className="font-['Inter'] text-xl text-gray-700 mb-4">{job.company}</p>
-              
-              <div className="flex flex-wrap gap-4 mb-4">
-                <div className="flex items-center gap-2 text-gray-600 font-['Inter']">
-                  <MapPin size={20} className="text-[#00F1FF]" />
-                  {job.location}
-                </div>
-                <div className="flex items-center gap-2 text-gray-600 font-['Inter']">
-                  <Briefcase size={20} className="text-[#00F1FF]" />
-                  {job.type}
-                </div>
-                <div className="flex items-center gap-2 text-gray-600 font-['Inter']">
-                  <DollarSign size={20} className="text-[#00F1FF]" />
-                  {job.salary}
-                </div>
-                <div className="flex items-center gap-2 text-gray-600 font-['Inter']">
-                  <Clock size={20} className="text-[#00F1FF]" />
-                  Posted {job.posted}
-                </div>
-              </div>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="font-['Inter'] text-xl text-gray-700 mb-4"
+              >
+                {job.company}
+              </motion.p>
 
-              <div className="flex gap-2">
-                <div className="bg-[#4E00FF] text-white hover:bg-[#4E00FF]/90">
+              <motion.div
+                variants={staggerContainer}
+                initial="initial"
+                animate="animate"
+                className="flex flex-wrap gap-4 mb-4"
+              >
+                {[
+                  { icon: FaMapPin, text: job.location, color: '#00F1FF' },
+                  { icon: FaBriefcase, text: job.type, color: '#00F1FF' },
+                  { icon: FaIndianRupeeSign, text: job.salary, color: '#00F1FF' },
+                  { icon: FaClock, text: `Posted ${job.posted}`, color: '#00F1FF' },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    variants={fadeInUp}
+                    className="flex items-center gap-2 text-gray-600 font-['Inter']"
+                  >
+                    <item.icon size={20} className="text-[#00F1FF]" />
+                    {item.text}
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+                className="flex gap-2"
+              >
+                <div className="bg-[#4E00FF] text-white hover:bg-[#4E00FF]/90 px-4 py-2 rounded-full text-sm font-medium">
                   {job.category}
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-            <div className="lg:w-64">
-               <Link href="/career/jobs/jobDetails/ApplyJob">
-              <Button
-                
-                className="w-full bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] py-6 text-lg cursor-pointer"
-              >
-                Apply for this Job
-              </Button>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, type: "spring" }}
+              className="lg:w-64"
+            >
+              <Link href="/career/jobs/jobDetails/ApplyJob">
+                <Button
+                  className="w-full bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] py-6 text-lg cursor-pointer transition-all duration-300 hover:shadow-lg"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Apply for this Job
+                </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Job Details Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -115,85 +174,146 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Job Description */}
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-lg p-6 shadow-sm"
+            >
               <h2 className="font-['Poppins'] font-semibold text-2xl mb-4 text-[#0E0E2E]">
                 Job Description
               </h2>
               <div className="font-['Inter'] text-gray-700 whitespace-pre-line leading-relaxed">
                 {job.description}
               </div>
-            </div>
+            </motion.div>
 
             {/* Key Responsibilities */}
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-white rounded-lg p-6 shadow-sm"
+            >
               <h2 className="font-['Poppins'] font-semibold text-2xl mb-4 text-[#0E0E2E]">
                 Key Responsibilities
               </h2>
-              <ul className="space-y-3">
+              <motion.ul
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="space-y-3"
+              >
                 {job.responsibilities.map((responsibility, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-[#00F1FF] mt-1 flex-shrink-0" />
+                  <motion.li
+                    key={index}
+                    variants={fadeInUp}
+                    className="flex items-start gap-3"
+                  >
+                    <FiCheckCircle size={20} className="text-[#4E00FF] mt-1 flex-shrink-0" />
                     <span className="font-['Inter'] text-gray-700">{responsibility}</span>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
-            </div>
+              </motion.ul>
+            </motion.div>
 
             {/* Requirements */}
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white rounded-lg p-6 shadow-sm"
+            >
               <h2 className="font-['Poppins'] font-semibold text-2xl mb-4 text-[#0E0E2E]">
                 Requirements
               </h2>
-              <ul className="space-y-3">
+              <motion.ul
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="space-y-3"
+              >
                 {job.requirements.map((requirement, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-[#4E00FF] mt-1 flex-shrink-0" />
+                  <motion.li
+                    key={index}
+                    variants={fadeInUp}
+                    className="flex items-start gap-3"
+                  >
+                    <FiCheckCircle size={20} className="text-[#4E00FF] mt-1 flex-shrink-0" />
                     <span className="font-['Inter'] text-gray-700">{requirement}</span>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
-            </div>
+              </motion.ul>
+            </motion.div>
           </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Benefits */}
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-['Poppins'] font-semibold text-xl mb-4 text-[#0E0E2E]">
-                Benefits & Perks
-              </h3>
-              <ul className="space-y-3">
-                {job.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <CheckCircle2 size={18} className="text-[#00F1FF] mt-1 flex-shrink-0" />
-                    <span className="font-['Inter'] text-sm text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             {/* Apply CTA */}
-            <div className="bg-gradient-to-br from-[#4E00FF] to-[#00F1FF] rounded-lg p-6 text-white">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+              className="bg-gradient-to-br from-[#4E00FF] to-[#00F1FF] rounded-lg p-6 text-white"
+            >
               <h3 className="font-['Poppins'] font-semibold text-xl mb-3">
                 Interested in this role?
               </h3>
               <p className="font-['Inter'] text-sm mb-4 text-white/90">
                 Apply now and join our team of talented professionals.
               </p>
-               <Link href="/career/jobs/jobDetails/ApplyJob">
-              <Button
-               
-                className="w-full bg-black text-[#4E00FF] hover:bg-white/90"
+              <Link href="/career/jobs/jobDetails/ApplyJob">
+                <Button
+                  className="w-full bg-black text-[#4E00FF] hover:bg-white/90 transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Apply Now
+                </Button>
+              </Link>
+            </motion.div>
+
+            {/* Benefits */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-white rounded-lg p-6 shadow-sm"
+            >
+              <h3 className="font-['Poppins'] font-semibold text-xl mb-4 text-[#0E0E2E]">
+                Benefits & Perks
+              </h3>
+              <motion.ul
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="space-y-3"
               >
-                Apply Now
-              </Button>
-               </Link>
-            </div>
+                {job.benefits.map((benefit, index) => (
+                  <motion.li
+                    key={index}
+                    variants={fadeInUp}
+                    className="flex items-start gap-2"
+                  >
+                    <FiCheckCircle size={20} className="text-[#4E00FF] mt-1 flex-shrink-0" />
+                    <span className="font-['Inter'] text-sm text-gray-700">{benefit}</span>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default JobDetailsPage
+export default JobDetailsPage;
