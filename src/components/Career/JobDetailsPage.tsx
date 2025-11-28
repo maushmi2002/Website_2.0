@@ -155,13 +155,14 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
               className="lg:w-64"
             >
               <Link href="/career/jobs/jobDetails/ApplyJob">
-                <Button
-                  className="w-full bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] py-6 text-lg cursor-pointer transition-all duration-300 hover:shadow-lg"
+                <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
+                  className="w-full bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] py-6 text-lg cursor-pointer transition-all duration-300 hover:shadow-lg rounded-lg"
                 >
                   Apply for this Job
-                </Button>
+                </motion.button>
+
               </Link>
             </motion.div>
           </div>
@@ -269,13 +270,14 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                 Apply now and join our team of talented professionals.
               </p>
               <Link href="/career/jobs/jobDetails/ApplyJob">
-                <Button
-                  className="w-full bg-black text-[#4E00FF] hover:bg-white/90 transition-all duration-300"
+                <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  className="w-full bg-black text-[#4E00FF] hover:bg-white/90 transition-all duration-300 rounded-lg py-3 font-medium"
                 >
                   Apply Now
-                </Button>
+                </motion.button>
+
               </Link>
             </motion.div>
 
