@@ -1,8 +1,11 @@
 import React from 'react'
 import Button from '../ui/Button'
-import { ArrowRight, Briefcase, Search, TrendingUp, Users } from 'lucide-react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
+import { FaArrowRight, FaBriefcase, FaSearchengin, FaUserSecret } from 'react-icons/fa6'
+import { FiTrendingUp } from 'react-icons/fi'
+import { motion } from "framer-motion";
 
 
 const HomePage = () => {
@@ -11,12 +14,15 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          {/* <Image
-            src="https://images.unsplash.com/photo-1683770997177-0603bd44d070?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWFtJTIwb2ZmaWNlfGVufDF8fHx8MTc2MTQ1NzE1MXww&ixlib=rb-4.1.0&q=80&w=1080"
+          <Image
+            src="/images/blog/career.webp"
             alt="Professional team"
-            className="w-full h-full object-cover"
-          /> */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0E0E2E]/90 to-[#4E00FF]/70"></div>
+            width={500}
+            height={300}
+            className="w-full h-full object-cover bg-yellow-200"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0E0E2E]/90bg-gradient-to-r from-blue-600/70 to-violet-700/70"></div>
         </div>
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
@@ -27,13 +33,13 @@ const HomePage = () => {
             Join a team of innovators and problem-solvers. Discover opportunities that align with your skills and aspirations at DSeT Consulting.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-           
+
             <Link href="/career/jobs">
               <Button
                 className="bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 h-1 cursor-pointer"
               >
                 Explore Jobs
-                <Search className="ml-2" size={20} />
+                <FaSearchengin className="ml-2" size={20} />
               </Button>
             </Link>
           </div>
@@ -41,53 +47,189 @@ const HomePage = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-[#F4F5F9]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-['Poppins'] font-bold text-3xl md:text-4xl text-center mb-12 text-[#0E0E2E]">
-            Why Choose DSeT Consulting
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="w-14 h-14 bg-[#4E00FF] rounded-lg flex items-center justify-center mb-4">
-                <Briefcase className="text-white cursor-pointer" size={28} />
-              </div>
-              <h3 className="font-['Poppins'] font-semibold text-xl mb-3 text-[#0E0E2E]">
-                Career Growth
-              </h3>
-              <p className="font-['Inter'] text-gray-600">
-                We invest in your professional development with training programs, mentorship, and clear career progression paths.
-              </p>
-            </div>
+<section className="py-20 bg-[#F4F5F9]">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="font-['Poppins'] font-bold text-3xl md:text-4xl text-center mb-12 text-[#0E0E2E]">
+      Why Choose DSeT Consulting
+    </h2>
 
-            {/* Card 2 */}
-            <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="w-14 h-14 bg-[#00F1FF] rounded-lg flex items-center justify-center mb-4">
-                <Users className="text-[#0E0E2E] cursor-pointer" size={28} />
-              </div>
-              <h3 className="font-['Poppins'] font-semibold text-xl mb-3 text-[#0E0E2E]">
-                Collaborative Culture
-              </h3>
-              <p className="font-['Inter'] text-gray-600">
-                Join a diverse team of experts who value innovation, collaboration, and continuous learning.
-              </p>
-            </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Card 1 - Career Growth */}
+      <motion.div
+        custom={0}
+        variants={{
+          hidden: { opacity: 0, y: 60, scale: 0.95 },
+          visible: (i) => ({
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+          })
+        }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-120px" }}
+        whileHover={{ y: -12, rotateX: 6, rotateY: -6 }}
+        className="group relative overflow-hidden bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl hover:ring-4 hover:ring-[#4E00FF]/20 transition-all duration-300"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#4E00FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            {/* Card 3 */}
-            <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="w-14 h-14 bg-[#4E00FF] rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="text-white cursor-pointer" size={28} />
-              </div>
-              <h3 className="font-['Poppins'] font-semibold text-xl mb-3 text-[#0E0E2E]">
-                Competitive Benefits
-              </h3>
-              <p className="font-['Inter'] text-gray-600">
-                Enjoy comprehensive benefits including health coverage, flexible work arrangements, and performance bonuses.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        <motion.div
+          whileHover={{ scale: 1.2, rotate: 8 }}
+          transition={{ type: "spring", stiffness: 400, damping: 12 }}
+          className="relative w-14 h-14 bg-[#4E00FF] rounded-lg flex items-center justify-center mb-5 shadow-md ring-2 ring-white/30"
+        >
+          <FaBriefcase className="text-white" size={28} />
+        </motion.div>
+
+        <motion.h3
+          className="font-['Poppins'] font-semibold text-xl mb-3 text-[#0E0E2E]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.03 } }
+          }}
+        >
+          {("Career Growth").split("").map((char, i) => (
+            <motion.span
+              key={i}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </motion.h3>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="font-['Inter'] text-gray-600 relative z-10"
+        >
+          We invest in your professional development with training programs, mentorship, and clear career progression paths.
+        </motion.p>
+      </motion.div>
+
+      {/* Card 2 - Collaborative Culture */}
+      <motion.div
+        custom={1}
+        variants={{
+          hidden: { opacity: 0, y: 60, scale: 0.95 },
+          visible: (i) => ({
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+          })
+        }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-120px" }}
+        whileHover={{ y: -12, rotateX: 6, rotateY: 6 }}
+        className="group relative overflow-hidden bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl hover:ring-4 hover:ring-[#00F1FF]/20 transition-all duration-300"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#00F1FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+        <motion.div
+          whileHover={{ scale: 1.2, rotate: -8 }}
+          transition={{ type: "spring", stiffness: 400, damping: 12 }}
+          className="relative w-14 h-14 bg-[#00F1FF] rounded-lg flex items-center justify-center mb-5 shadow-md ring-2 ring-white/30"
+        >
+          <FaUserSecret className="text-[#0E0E2E]" size={28} />
+        </motion.div>
+
+        <motion.h3
+          className="font-['Poppins'] font-semibold text-xl mb-3 text-[#0E0E2E]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.03 } }
+          }}
+        >
+          {("Collaborative Culture").split("").map((char, i) => (
+            <motion.span
+              key={i}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </motion.h3>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.55, duration: 0.5 }}
+          className="font-['Inter'] text-gray-600 relative z-10"
+        >
+          Join a diverse team of experts who value innovation, collaboration, and continuous learning.
+        </motion.p>
+      </motion.div>
+
+      {/* Card 3 - Competitive Benefits */}
+      <motion.div
+        custom={2}
+        variants={{
+          hidden: { opacity: 0, y: 60, scale: 0.95 },
+          visible: (i) => ({
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+          })
+        }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-120px" }}
+        whileHover={{ y: -12, rotateX: 6, rotateY: -6 }}
+        className="group relative overflow-hidden bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl hover:ring-4 hover:ring-[#4E00FF]/20 transition-all duration-300"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#4E00FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+        <motion.div
+          whileHover={{ scale: 1.2, rotate: 8 }}
+          transition={{ type: "spring", stiffness: 400, damping: 12 }}
+          className="relative w-14 h-14 bg-[#4E00FF] rounded-lg flex items-center justify-center mb-5 shadow-md ring-2 ring-white/30"
+        >
+          <FiTrendingUp className="text-white" size={28} />
+        </motion.div>
+
+        <motion.h3
+          className="font-['Poppins'] font-semibold text-xl mb-3 text-[#0E0E2E]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.03 } }
+          }}
+        >
+          {("Competitive Benefits").split("").map((char, i) => (
+            <motion.span
+              key={i}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </motion.h3>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+          className="font-['Inter'] text-gray-600 relative z-10"
+        >
+          Enjoy comprehensive benefits including health coverage, flexible work arrangements, and performance bonuses.
+        </motion.p>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-[#4E00FF] to-[#00F1FF]">
@@ -98,15 +240,15 @@ const HomePage = () => {
           <p className="font-['Inter'] text-lg mb-8 text-white/90 max-w-2xl mx-auto">
             Browse our current openings and find the perfect role that matches your expertise and career goals.
           </p>
-           <Link href="/career/jobs">
-          <Button
-            // onClick={() => onNavigate("jobs")}
-            className="bg-black text-[#4E00FF] hover:bg-white/90 px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
-          >
-            View All Jobs
-            <ArrowRight className="ml-2 " size={20} />
-          </Button>
-           </Link>
+          <Link href="/career/jobs">
+            <Button
+
+              className="bg-black text-[#4E00FF] hover:bg-white/90 px-8 py-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer h-1"
+            >
+              View All Jobs
+              <FaArrowRight className="ml-2 " size={20} />
+            </Button>
+          </Link>
         </div>
       </section>
     </div>

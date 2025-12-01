@@ -9,7 +9,6 @@ const career = () => {
       <Layout>  
         <HomePage />
         <WhatWeDoPage/>
-        
       </Layout>
       
     </div>
