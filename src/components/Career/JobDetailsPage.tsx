@@ -284,13 +284,14 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                   whileTap={{ scale: 0.95 }}
                   className="w-full relative overflow-hidden bg-white text-[#5E17EB] hover:bg-white/95 transition-all duration-300 rounded-lg py-3 text-base font-semibold shadow-lg group"
                 >
-                  <span className="relative z-10 font-['Inter'] tracking-wide flex items-center justify-center gap-2">
+                  <span className="relative z-10 font-['Inter'] tracking-wide flex items-center justify-center gap-2 cursor-pointer">
                     Apply Now
                     <motion.span
                       animate={{ x: [0, 5, 0] }}
                       transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                     >→</motion.span>
                   </span>
+
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-white/90 to-[#F0E6FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     initial={false}
