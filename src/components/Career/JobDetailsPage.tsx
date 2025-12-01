@@ -46,7 +46,6 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
     ],
   };
 
-  // Animation Variants
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -78,7 +77,7 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                 whileTap={{ scale: 0.95 }}
               >
                 <FaArrowLeft
-                  className="w-7 h-7 cursor-pointer text-gray-700 hover:text-blue-600 transition-colors"
+                  className="w-7 h-7 cursor-pointer text-[#5E17EB] hover:text-[#1E90FF] transition-colors"
                 />
               </motion.div>
             </Link>
@@ -100,7 +99,7 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="font-['Poppins'] font-bold text-3xl md:text-4xl mb-3 text-[#4E00FF]"
+                className="font-['Poppins'] font-bold text-3xl md:text-4xl mb-3 text-[#5E17EB]"
               >
                 {job.title}
               </motion.h1>
@@ -120,17 +119,17 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                 className="flex flex-wrap gap-4 mb-4"
               >
                 {[
-                  { icon: FaMapPin, text: job.location, color: '#00F1FF' },
-                  { icon: FaBriefcase, text: job.type, color: '#00F1FF' },
-                  { icon: FaIndianRupeeSign, text: job.salary, color: '#00F1FF' },
-                  { icon: FaClock, text: `Posted ${job.posted}`, color: '#00F1FF' },
+                  { icon: FaMapPin, text: job.location },
+                  { icon: FaBriefcase, text: job.type },
+                  { icon: FaIndianRupeeSign, text: job.salary },
+                  { icon: FaClock, text: `Posted ${job.posted}` },
                 ].map((item, i) => (
                   <motion.div
                     key={i}
                     variants={fadeInUp}
                     className="flex items-center gap-2 text-gray-600 font-['Inter']"
                   >
-                    <item.icon size={20} className="text-[#00F1FF]" />
+                    <item.icon size={20} className="text-[#1E90FF]" />
                     {item.text}
                   </motion.div>
                 ))}
@@ -142,7 +141,7 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                 transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
                 className="flex gap-2"
               >
-                <div className="bg-[#4E00FF] text-white hover:bg-[#4E00FF]/90 px-4 py-2 rounded-full text-sm font-medium">
+                <div className="bg-[#5E17EB] text-white hover:bg-[#5E17EB]/90 px-4 py-2 rounded-full text-sm font-medium">
                   {job.category}
                 </div>
               </motion.div>
@@ -152,19 +151,26 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, type: "spring" }}
-              className="lg:w-64"
+              className="lg:w-56"
             >
               <Link href="/career/jobs/jobDetails/ApplyJob">
                 <motion.button
-                  whileHover={{ scale: 1.03 }}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(94, 23, 235, 0.4)"
+                  }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-[#00F1FF] hover:bg-[#00F1FF]/90 text-[#0E0E2E] py-6 text-lg cursor-pointer transition-all duration-300 hover:shadow-lg rounded-lg"
+                  className="w-full relative overflow-hidden bg-gradient-to-r from-[#5E17EB] via-[#7B2FFF] to-[#1E90FF] text-white font-semibold py-4 px-6 rounded-xl cursor-pointer transition-all duration-300 shadow-lg hover:shadow-2xl group"
                 >
-                  Apply for this Job
+                  <span className="relative z-10 font-['Inter'] text-base tracking-wide">Apply for this Job</span>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-[#1E90FF] via-[#7B2FFF] to-[#5E17EB] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={false}
+                  />
                 </motion.button>
-
               </Link>
             </motion.div>
+
           </div>
         </div>
       </motion.div>
@@ -214,7 +220,7 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                     variants={fadeInUp}
                     className="flex items-start gap-3"
                   >
-                    <FiCheckCircle size={20} className="text-[#4E00FF] mt-1 flex-shrink-0" />
+                    <FiCheckCircle size={20} className="text-[#5E17EB] mt-1 flex-shrink-0" />
                     <span className="font-['Inter'] text-gray-700">{responsibility}</span>
                   </motion.li>
                 ))}
@@ -245,7 +251,7 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                     variants={fadeInUp}
                     className="flex items-start gap-3"
                   >
-                    <FiCheckCircle size={20} className="text-[#4E00FF] mt-1 flex-shrink-0" />
+                    <FiCheckCircle size={20} className="text-[#5E17EB] mt-1 flex-shrink-0" />
                     <span className="font-['Inter'] text-gray-700">{requirement}</span>
                   </motion.li>
                 ))}
@@ -261,7 +267,7 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-              className="bg-gradient-to-br from-[#4E00FF] to-[#00F1FF] rounded-lg p-6 text-white"
+              className="bg-gradient-to-br from-[#5E17EB] to-[#1E90FF] rounded-lg p-6 text-white"
             >
               <h3 className="font-['Poppins'] font-semibold text-xl mb-3">
                 Interested in this role?
@@ -271,11 +277,24 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
               </p>
               <Link href="/career/jobs/jobDetails/ApplyJob">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 10px 30px rgba(255, 255, 255, 0.3)"
+                  }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full bg-black text-[#4E00FF] hover:bg-white/90 transition-all duration-300 rounded-lg py-3 font-medium"
+                  className="w-full relative overflow-hidden bg-white text-[#5E17EB] hover:bg-white/95 transition-all duration-300 rounded-lg py-3 text-base font-semibold shadow-lg group"
                 >
-                  Apply Now
+                  <span className="relative z-10 font-['Inter'] tracking-wide flex items-center justify-center gap-2">
+                    Apply Now
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                    >→</motion.span>
+                  </span>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-white/90 to-[#F0E6FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={false}
+                  />
                 </motion.button>
 
               </Link>
@@ -305,7 +324,7 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                     variants={fadeInUp}
                     className="flex items-start gap-2"
                   >
-                    <FiCheckCircle size={20} className="text-[#4E00FF] mt-1 flex-shrink-0" />
+                    <FiCheckCircle size={20} className="text-[#5E17EB] mt-1 flex-shrink-0" />
                     <span className="font-['Inter'] text-sm text-gray-700">{benefit}</span>
                   </motion.li>
                 ))}
