@@ -45,6 +45,16 @@ const jobs: Job[] = [
     salary: "₹9L - ₹12L",
     posted: "5 days ago",
   },
+   {
+    id: 7,
+    title: "Software Developer Intern",
+    company: "DSeT Consulting",
+    location: "Banglore",
+    type: "Internship",
+    category: "Technology",
+    salary: "₹15k - ₹25k",
+    posted: "1 day ago",
+  },
   {
     id: 3,
     title: "UX/UI Designer",
@@ -99,7 +109,7 @@ const JobsPage = () => {
 
     // ✅ Only 2 locations + All + None
     const locations = ["None", "All Locations", "Banglore", "Bhubneswar"];
-    const types = ["None", "Full-time", "Part-time", "Contract"];
+    const types = ["None", "Full-time", "Part-time", "Contract", "Internship"];
     const categories = [
         "None",
         "Technology",
@@ -124,28 +134,29 @@ const JobsPage = () => {
     };
 
     // ✅ Filter logic (unchanged structure, fully working)
-    const filteredJobs = jobs.filter((job) => {
-        const matchesTitle = job.title.toLowerCase().includes(searchTerm.toLowerCase());
+const filteredJobs = jobs.filter((job) => {
+    const matchesTitle = job.title.toLowerCase().includes(searchTerm.toLowerCase());
 
-        const matchesLocation =
-            selectedLocation === "Location" ||
-                selectedLocation === "All Locations" ||
-                selectedLocation === "None"
-                ? true
-                : job.location === selectedLocation;
+    const matchesLocation =
+        selectedLocation === "Location" ||
+        selectedLocation === "All Locations" ||
+        selectedLocation === "None"
+            ? true
+            : job.location === selectedLocation;
 
-        const matchesType =
-            selectedType === "WorkType" || selectedType === "None"
-                ? true
-                : job.type === selectedType;
+    const matchesType =
+        selectedType === "WorkType" || selectedType === "None"
+            ? true
+            : job.type === selectedType || job.type === "Internship";
 
-        const matchesCategory =
-            selectedCategory === "JobCategory" || selectedCategory === "None"
-                ? true
-                : job.category === selectedCategory;
+    const matchesCategory =
+        selectedCategory === "JobCategory" || selectedCategory === "None"
+            ? true
+            : job.category === selectedCategory;
 
-        return matchesTitle && matchesLocation && matchesType && matchesCategory;
-  });
+    return matchesTitle && matchesLocation && matchesType && matchesCategory;
+});
+
 
   return (
     <div className="min-h-screen bg-[#F4F5F9]">
