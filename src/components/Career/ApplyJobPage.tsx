@@ -67,161 +67,216 @@ function ApplyJobPage() {
         </div>
       </div>
 
-      {/* Application Form */}
+      {/* Application Form + Job Description Two-Column Layout */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="max-w-3xl mx-auto">
-          <form
-            onSubmit={handleSubmit}
-            className="bg-white rounded-xl p-8 shadow-md"
-          >
-            {/* Personal Info */}
-            <div className="mb-8">
-              <h2 className="font-['Poppins'] font-semibold text-2xl mb-6 text-[#0E0E2E]">
-                Personal Information
-              </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-black">
-                    First Name *
-                  </label>
-                  <input
-                    name="firstName"
-                    type="text"
-                    required
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    className="  text-black  placeholder-gray-400 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
-                    placeholder="John"
-                  />
-                </div>
+          {/* LEFT SIDE — Application Form */}
+          <div className="max-w-3xl mx-auto w-full">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white rounded-xl p-8 shadow-md"
+            >
+              {/* Personal Info */}
+              <div className="mb-8">
+                <h2 className="font-['Poppins'] font-semibold text-2xl mb-6 text-[#0E0E2E]">
+                  Personal Information
+                </h2>
 
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-black">
-                    Last Name *
-                  </label>
-                  <input
-                    name="lastName"
-                    type="text"
-                    required
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="  placeholder-gray-400 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF] text-black"
-                    placeholder="Doe"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-black">
-                    Email Address *
-                  </label>
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="  placeholder-gray-400  text-black w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
-                    placeholder="john.doe@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-black">
-                    Phone Number *
-                  </label>
-                  <input
-                    name="phone"
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="  text-black  placeholder-gray-400 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
-                    placeholder="+1 (555) 123-4567"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <label className="block text-sm font-medium mb-2 text-black">
-                  LinkedIn Profile (Optional)
-                </label>
-                <input
-                  name="linkedIn"
-                  type="url"
-                  value={formData.linkedIn}
-                  onChange={handleInputChange}
-                  className="  placeholder-gray-400  text-black w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
-                  placeholder="https://linkedin.com/in/johndoe"
-                />
-              </div>
-            </div>
-
-            {/* Application Details */}
-            <div className="mb-8">
-              <h2 className="font-['Poppins'] font-semibold text-2xl mb-6 text-[#0E0E2E]">
-                Application Details
-              </h2>
-
-              {/* Resume Upload */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium mb-2 text-black">
-                  Resume/CV *
-                </label>
-                <label
-                  htmlFor="resume"
-                  className="flex items-center justify-center w-full px-4 py-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#4E00FF] transition-colors bg-white text-center"
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <FaUpload className="mx-auto mb-2 text-[#4E00FF]" size={32} />
-                    <p className="text-sm text-gray-600 mb-1">
-                      {formData.resume
-                        ? formData.resume.name
-                        : "Click to upload your resume"}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      PDF, DOC, or DOCX (Max 5MB)
-                    </p>
+                    <label className="block text-sm font-medium mb-2 text-black">
+                      First Name *
+                    </label>
+                    <input
+                      name="firstName"
+                      type="text"
+                      required
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      className="text-black placeholder-gray-400 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
+                      placeholder="John"
+                    />
                   </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-black">
+                      Last Name *
+                    </label>
+                    <input
+                      name="lastName"
+                      type="text"
+                      required
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      className="placeholder-gray-400 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF] text-black"
+                      placeholder="Doe"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-black">
+                      Email Address *
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="placeholder-gray-400 text-black w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
+                      placeholder="john.doe@example.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-black">
+                      Phone Number *
+                    </label>
+                    <input
+                      name="phone"
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="text-black placeholder-gray-400 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
+                      placeholder="+1 (555) 123-4567"
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <label className="block text-sm font-medium mb-2 text-black">
+                    LinkedIn Profile (Optional)
+                  </label>
                   <input
-                    id="resume"
-                    type="file"
-                    required
-                    onChange={handleFileChange}
-                    className="hidden"
-                    accept=".pdf,.doc,.docx"
+                    name="linkedIn"
+                    type="url"
+                    value={formData.linkedIn}
+                    onChange={handleInputChange}
+                    className="placeholder-gray-400 text-black w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
+                    placeholder="https://linkedin.com/in/johndoe"
                   />
-                </label>
+                </div>
               </div>
 
-              {/* Cover Letter */}
-              <div>
-                <label className="block text-sm font-medium mb-2 text-black">
-                  Cover Letter *
-                </label>
-                <textarea
-                  name="coverLetter"
-                  required
-                  value={formData.coverLetter}
-                  onChange={handleInputChange}
-                  className="  text-black placeholder-gray-400 w-full border border-gray-300 rounded-lg p-3 min-h-[180px] focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
-                  placeholder="Tell us why you're interested in this position..."
-                />
-              </div>
-            </div>
+              {/* Application Details */}
+              <div className="mb-8">
+                <h2 className="font-['Poppins'] font-semibold text-2xl mb-6 text-[#0E0E2E]">
+                  Application Details
+                </h2>
 
-            {/* Submit */}
-            <div className="pt-6 border-t">
-              <button
-                type="submit"
-                className="w-full md:w-auto bg-[#4E00FF] hover:bg-[#4E00FF]/90 text-white px-12 py-4 rounded-lg text-lg font-semibold transition-transform duration-200 hover:scale-105"
-              >
-                Submit Application
-              </button>
-            </div>
-          </form>
+                {/* Resume Upload */}
+                <div className="mb-6">
+                  <label className="block text-sm font-medium mb-2 text-black">
+                    Resume/CV *
+                  </label>
+                  <label
+                    htmlFor="resume"
+                    className="flex items-center justify-center w-full px-4 py-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#4E00FF] transition-colors bg-white text-center"
+                  >
+                    <div>
+                      <FaUpload className="mx-auto mb-2 text-[#4E00FF]" size={32} />
+                      <p className="text-sm text-gray-600 mb-1">
+                        {formData.resume
+                          ? formData.resume.name
+                          : "Click to upload your resume"}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        PDF, DOC, or DOCX (Max 5MB)
+                      </p>
+                    </div>
+                    <input
+                      id="resume"
+                      type="file"
+                      required
+                      onChange={handleFileChange}
+                      className="hidden"
+                      accept=".pdf,.doc,.docx"
+                    />
+                  </label>
+                </div>
+
+                {/* Cover Letter */}
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-black">
+                    Cover Letter *
+                  </label>
+                  <textarea
+                    name="coverLetter"
+                    required
+                    value={formData.coverLetter}
+                    onChange={handleInputChange}
+                    className="text-black placeholder-gray-400 w-full border border-gray-300 rounded-lg p-3 min-h-[180px] focus:outline-none focus:ring-2 focus:ring-[#4E00FF]"
+                    placeholder="Tell us why you're interested in this position..."
+                  />
+                </div>
+              </div>
+
+              {/* Submit */}
+              <div className="pt-6 border-t">
+                <button
+                  type="submit"
+                  className="w-full md:w-auto bg-[#4E00FF] hover:bg-[#4E00FF]/90 text-white px-12 py-4 rounded-lg text-lg font-semibold transition-transform duration-200 hover:scale-105"
+                >
+                  Submit Application
+                </button>
+              </div>
+            </form>
+          </div>
+
+          {/* RIGHT SIDE — Job Description */}
+         <div className="bg-white rounded-xl p-8 shadow-md min-h-screen">
+  <h2 className="text-3xl font-bold text-[#0E0E2E] mb-4 font-['Poppins']">
+    Job Description
+  </h2>
+
+  <div className="space-y-6 text-black">
+    {/* TITLE */}
+    <div>
+      <h3 className="text-xl font-semibold">Frontend Developer</h3>
+      <p className="text-gray-600">Company: <span className="font-medium">TechNova Pvt. Ltd.</span></p>
+      <p className="text-gray-600">Location: <span className="font-medium">Bhubaneswar, Odisha</span></p>
+      <p className="text-gray-600">Job Type: <span className="font-medium">Full-Time</span></p>
+    </div>
+
+    {/* SKILLS */}
+    <div>
+      <h4 className="text-lg font-semibold mb-2">Required Skills</h4>
+      <ul className="list-disc ml-5 space-y-1 text-gray-700">
+        <li>React.js & Next.js</li>
+        <li>Tailwind CSS</li>
+        <li>Version Control (Git/GitHub)</li>
+        <li>API Integration</li>
+      </ul>
+    </div>
+
+    {/* RESPONSIBILITIES */}
+    <div>
+      <h4 className="text-lg font-semibold mb-2">Responsibilities</h4>
+      <ul className="list-disc ml-5 space-y-1 text-gray-700">
+        <li>Build modern UI components</li>
+        <li>Collaborate with backend team</li>
+        <li>Optimize performance</li>
+        <li>Fix bugs and improve UX</li>
+      </ul>
+    </div>
+
+    {/* REQUIREMENTS */}
+    <div>
+      <h4 className="text-lg font-semibold mb-2">Requirements</h4>
+      <ul className="list-disc ml-5 space-y-1 text-gray-700">
+        <li>Bachelor’s degree or equivalent</li>
+        <li>Strong knowledge of JavaScript</li>
+        <li>Problem-solving ability</li>
+        <li>Good communication skills</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
 
@@ -253,7 +308,6 @@ function ApplyJobPage() {
           </div>
         </div>
       )}
-
     </div>
   );
 }

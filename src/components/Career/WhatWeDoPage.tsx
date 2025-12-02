@@ -67,7 +67,10 @@ function WhatWeDoPage() {
               alt="Consulting workspace"
               className="w-full h-full object-cover scale-105 hover:scale-110 transition-transform duration-1000 ease-in-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#002b57]/95 via-[#001c38]/85 to-[#000f24]/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-b 
+from-[#002b57]/80 via-[#001c38]/70 to-[#000f24]/75">
+</div>
+
           </div>
 
           <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-white text-center animate-fadeIn">
@@ -177,7 +180,7 @@ function WhatWeDoPage() {
               <div className="w-24 h-1 bg-gradient-to-r from-[#6a14ff] to-[#1e90ff] mb-6"></div>
 
               <h2 className="font-['Poppins'] font-bold text-3xl md:text-4xl mb-6 text-white tracking-wide">
-                Why Choose <span className="bg-gradient-to-r from-[#ff851b] to-[#1e90ff] bg-clip-text text-transparent font-semibold">
+                Why Choose <span className="bg-gradient-to-r from-[#5e17ea] to-[#1e90ff] bg-clip-text text-transparent font-semibold">
                   DSeT Consulting
                 </span>
 

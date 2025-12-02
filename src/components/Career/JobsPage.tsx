@@ -11,7 +11,7 @@ import {
   FaChevronDown,
   FaTimes,
 } from "react-icons/fa";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiSearch } from "react-icons/fi";
 
 interface Job {
   id: number;
@@ -184,7 +184,7 @@ const filteredJobs = jobs.filter((job) => {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
                         {/* Search Bar */}
                         <div className="relative md:col-span-1">
-                            <FaSearchengin
+                            <FiSearch
                                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black"
                                 size={20}
                             />

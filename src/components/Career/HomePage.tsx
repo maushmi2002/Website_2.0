@@ -4,7 +4,7 @@ import Button from '../ui/Button'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaArrowRight, FaBriefcase, FaSearchengin, FaUserSecret } from 'react-icons/fa6'
-import { FiTrendingUp } from 'react-icons/fi'
+import { FiSearch, FiTrendingUp } from 'react-icons/fi'
 import { motion } from "framer-motion";
 
 
@@ -33,7 +33,10 @@ const HomePage = () => {
             />
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#002b57]/95 via-[#001b38]/85 to-[#000f24]/90"></div>
+  <div className="absolute inset-0 bg-gradient-to-b 
+from-[#002b57]/75 via-[#001b38]/65 to-[#000f24]/70">
+</div>
+
           </div>
 
           {/* Content */}
@@ -61,7 +64,7 @@ const HomePage = () => {
                     font-semibold tracking-wide"
                 >
                   Explore Jobs
-                  <FaSearchengin className="ml-2" size={22} />
+                  <FiSearch className="ml-2" size={22} />
                 </Button>
               </Link>
             </div>
@@ -89,7 +92,7 @@ const HomePage = () => {
         {/* HEADING */}
         <h2 className="font-['Poppins'] font-bold text-3xl md:text-4xl text-center mb-12 text-white">
           The{" "}
-          <span className="bg-gradient-to-r from-[#ff851b] to-[#1e90ff] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#5e17ea] to-[#1e90ff] bg-clip-text text-transparent">
             DSeT
           </span>{" "}
           Advantage

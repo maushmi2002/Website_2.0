@@ -122,7 +122,8 @@ As a Senior Software Engineer at DSeT Consulting, you'll have the opportunity to
                   { icon: FaMapPin, text: job.location },
                   { icon: FaBriefcase, text: job.type },
                   { icon: FaIndianRupeeSign, text: job.salary },
-                  { icon: FaClock, text: `Posted ${job.posted}` },
+                 { icon: FaClock, text: `Posted ${job.posted}` },
+
                 ].map((item, i) => (
                   <motion.div
                     key={i}
